@@ -1,3 +1,120 @@
+# Restaurant Management System
+
+## Introduction
+This is a **Restaurant Management System** built using **Laravel, MySQL, and JavaScript (AJAX)**. The system includes features for managing orders, kitchen operations, and concessions.
+
+---
+
+## Features
+- **Concession Management**: CRUD operations for concessions.
+- **Order Management**: Create, view, Delete, send orders to the kitchen, and track their status.
+- **Kitchen Management**: Track and process orders in the kitchen.
+- **Automated Order Status Update**: Orders change from **Pending** to **In-Progress** when their scheduled time arrives.
+- **Real-time Updates**: Uses AJAX to fetch and update data dynamically.
+
+---
+
+## Installation & Setup
+
+### Prerequisites
+Ensure you have the following installed on your machine:
+- **PHP 8+**
+- **Composer**
+- **MySQL** 
+- **Node.js & npm**
+- **Git**
+
+### Steps to Install
+1. **Clone the repository**
+   ```sh
+   git clone https://github.com/Gihan9/Restaurant-Management.git
+   cd Restaurant-Management
+   ```
+
+2. **Install dependencies**
+   ```sh
+   composer install
+   npm install
+   ```
+
+3. **Set up environment variables**
+   Copy the `.env.example` file to `.env` and update your database credentials:
+   ```sh
+   cp .env.example .env
+   ```
+
+4. **Generate application key**
+   ```sh
+   php artisan key:generate
+   ```
+
+5. **Run database migrations & seed data**
+   ```sh
+   php artisan migrate --seed
+   ```
+
+6. **Start the development server**
+   ```sh
+   php artisan serve
+   ```
+
+7. **Compile assets**
+   ```sh
+   npm run dev
+   ```
+
+---
+
+## Usage
+- Visit `http://127.0.0.1:8000` to access the system.
+- The homepage redirects to the **Concessions Management Page**.
+- Navigate through the application to manage orders and kitchen operations.
+
+---
+
+## API Routes
+| Route                     | Method | Description |
+|---------------------------|--------|-------------|
+| `/api/orders`             | GET    | Get all orders |
+| `/api/kitchen/orders`     | GET    | Get kitchen orders ready to be processed |
+| `/api/orders/send-to-kitchen/{id}` | POST | Send order to kitchen |
+| `/api/kitchen/orders/complete/{id}` | POST | Mark an order as completed |
+
+---
+
+## Scheduled Task (Order Status Update)
+To automatically change orders from **Pending** to **In-Progress** when the scheduled time is reached, set up Laravel Scheduler:
+1. **Edit the crontab**
+   ```sh
+   crontab -e
+   ```
+2. **Add this line at the bottom** (adjust path accordingly):
+   ```sh
+   * * * * * php /path/to/project/artisan schedule:run >> /dev/null 2>&1
+   ```
+
+---
+
+## Contribution & Support
+- Fork the repository, make changes, and submit a **pull request**.
+- Report issues or feature requests via **GitHub Issues**.
+
+---
+
+## License
+This project is licensed under the **MIT License**.
+
+---
+
+### Author
+Developed by **Gihan** 🚀
+
+
+
+
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
